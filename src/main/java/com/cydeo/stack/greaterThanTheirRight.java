@@ -10,9 +10,9 @@ public class greaterThanTheirRight {
 
         find(arr);
     }
-    public static void find(Integer[] arr) {
-        Stack<Integer> num = new Stack<Integer>(); //6, 5
-        int j = arr.length - 1; // last index of array j=4
+    public static void find2(Integer[] arr) {
+        Stack<Integer> num = new Stack<>();
+        int j = arr.length - 1;
 
         while (j >= 0) {
 
@@ -28,6 +28,27 @@ public class greaterThanTheirRight {
             j--;
         }
         System.out.println(num);
+    }
+    Integer[] arr = {10, 4, 6, 3, 5};
+    public static void find(Integer[] arr) {
+
+        if (arr == null || arr.length == 0) return;
+
+        Stack<Integer> stack = new Stack<>();
+
+        for (int value : arr) {
+
+
+            while (!stack.isEmpty() && stack.peek() < value) {
+                stack.pop();
+
+            }
+            stack.push(value);
+        }
+
+        while (!stack.isEmpty()) {
+            System.out.println(stack.pop() + " ");
+        }
     }
 }
 
