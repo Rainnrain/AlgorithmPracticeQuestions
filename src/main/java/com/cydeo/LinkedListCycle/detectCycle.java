@@ -16,6 +16,7 @@ public class detectCycle {
     }
 
     public static ListNode detectCycle(ListNode listNode){
+
        HashSet<ListNode> nodes= new HashSet<>();
 
        while(listNode.next!=null){
