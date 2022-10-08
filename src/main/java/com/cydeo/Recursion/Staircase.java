@@ -4,7 +4,7 @@ public class Staircase {
 
     public static void main(String[] args) {
 
-        System.out.println(steps(4));
+        System.out.println(steps(3));
     }
 
     public static int steps(int n){
