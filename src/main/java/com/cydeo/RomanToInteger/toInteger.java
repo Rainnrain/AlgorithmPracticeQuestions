@@ -28,20 +28,17 @@ public class toInteger {
         for (int i = 0; i <= str.length() - 1; i++) {
 
 
-                while(i<str.length()-1){
+                if(i<str.length()-1){
 
                     if (strMinus.contains(""+(str.charAt(i) + ""+str.charAt(i + 1)))){
                         value -= romanLetters.get(""+str.charAt(i));
-                        break;
+
 
                     } else {
                         value += romanLetters.get("" + str.charAt(i));
-                        break;
                     }
-
                 }
-                   if(i==str.length()-1) value += romanLetters.get("" + str.charAt(i));
-
+                   else if(i==str.length()-1) value += romanLetters.get("" + str.charAt(i));
         }
         return value;
     }

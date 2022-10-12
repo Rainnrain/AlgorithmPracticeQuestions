@@ -4,7 +4,7 @@ public class AlphabetValue {
     public static void main(String[] args) {
 
 
-        System.out.println(ExcelSheetColumnNumber("AFQ" ));
+        System.out.println(ExcelSheetColumnNumber2("ZY" ));
 
     }
 
@@ -28,6 +28,18 @@ public class AlphabetValue {
             }
         }
             return column;
+        }
+
+        public static int ExcelSheetColumnNumber2(String str){
+
+        int sum=0;
+
+            for (int i = 0; i <str.length() ; i++) {
+
+                sum=sum* 26 +(str.charAt(i)-64 );
+
+            }
+            return sum;
         }
 
 }
