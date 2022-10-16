@@ -100,4 +100,18 @@ public class ListNodePalindrome {
         }
         return prev;
     }
+
+    public static ListNode reverse2(ListNode head){
+        ListNode prev = null;
+        // 1->2->3
+        while(head!=null){
+            ListNode temp=head.next;
+            head.next=prev;
+            prev=head;
+            head=temp;
+
+        }
+
+        return prev;
+    }
 }
