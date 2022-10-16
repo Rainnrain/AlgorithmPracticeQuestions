@@ -9,6 +9,13 @@ public class toInteger {
 
         String roman = "MCMXCIV";
         System.out.println(romanToDigit(roman));
+
+        int age=30;
+        System.out.println(changeAge(age));
+        System.out.println(age);
+
+        
+
     }
 
 
@@ -42,4 +49,10 @@ public class toInteger {
         }
         return value;
     }
+
+
+public static int changeAge(int age){
+    age=35;
+    return age;
+}
 }
