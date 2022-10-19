@@ -18,6 +18,7 @@ public class SingleNumber {
         for (int each : nums) {
             if (numbers.contains(each)) {
                 numbers.remove(each);
+
             } else {
                 numbers.add(each);
             }
