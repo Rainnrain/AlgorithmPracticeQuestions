@@ -119,6 +119,7 @@ public class ListNodePalindrome {
 
     public static boolean withStack(ListNode head){
         Deque<Integer> stack = new LinkedList<>();
+        Stack <Integer> stack2=new Stack<>();
         return true;
     }
 }
