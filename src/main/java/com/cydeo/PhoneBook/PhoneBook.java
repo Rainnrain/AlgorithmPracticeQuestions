@@ -13,6 +13,7 @@ public PhoneBookNode head;
 public PhoneBookNode tail;
 public int size;
 
+   Map<String, PhoneBookNode> nodesMap = new HashMap<>();
 public boolean isEmpty(){
    return head==null;
 }
@@ -38,12 +39,17 @@ public int size(){
     }
 
    public void addToPhoneBook(Contact contact){
+
    PhoneBookNode phoneBookNode= new PhoneBookNode(contact);
    phoneBookNode.next=head;
    head=phoneBookNode;
+
+      nodesMap.put(contact.getFirstName()+" "+contact.getLastName(),phoneBookNode);
    }
 
    public PhoneBookNode findByFirstName(String firstName){
+
+
       PhoneBookNode current= head;
    while(current!=null){
       if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
@@ -89,20 +95,27 @@ public int size(){
          if(current==head){
             head=current.next;
             current.next=null;
+            current=head;
+            previous=head;
+            continue;
          }
 
          else if(current==tail){
             tail=previous;
             previous.next=null;
+
          }
          // case 3 : middle
          else{
             previous.next=current.next;
             current.next=null;
+            current=previous.next;
+            continue;
+
          }
          }
          // after deletion
-         size--;
+
          previous=current;
          current=current.next;
       }
