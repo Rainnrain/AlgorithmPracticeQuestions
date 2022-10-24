@@ -44,61 +44,79 @@ public int size(){
    }
 
    public PhoneBookNode findByFirstName(String firstName){
-
-   while(head!=null){
-      if(head.contact.getFirstName().equalsIgnoreCase(firstName)){
-         return head;
+      PhoneBookNode current= head;
+   while(current!=null){
+      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
+         return current;
       }
+      current=current.next;
    }
    return null;
    }
 
    public List<PhoneBookNode> findAllByLastName(String LastName){
    List<PhoneBookNode> ListOfLastNames= new ArrayList<>();
-
-   while(head!=null){
-      if(head.contact.getLastName().equalsIgnoreCase(LastName)){
-         ListOfLastNames.add(head);
+      PhoneBookNode current= head;
+   while(current!=null){
+      if(current.contact.getLastName().equalsIgnoreCase(LastName)){
+         ListOfLastNames.add(current);
       }
+      current=current.next;
    }
    return ListOfLastNames;
    }
 
    public void deleteByFirstName(String firstName){
    PhoneBookNode previous= head;
+      PhoneBookNode current= head;
 
-   while(head!=null){
-      if(head.contact.getFirstName().equalsIgnoreCase(firstName)){
-         previous.next=head.next;
+   while(current!=null){
+      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
+         previous.next=current.next;
       }
-      previous=head;
-      head=head.next;
+      previous=current;
+      current=current.next;
    }
    }
 
    public void deleteAllMatchingLastName(String LastName){
       PhoneBookNode previous= head;
+      PhoneBookNode current= head;
 
-      while(head!=null){
-         if(head.contact.getFirstName().equalsIgnoreCase(LastName)){
-            previous.next=head.next;
+      while(current!=null){
+         if(current.contact.getLastName().equalsIgnoreCase(LastName)){
+
+         if(current==head){
+            head=current.next;
+            current.next=null;
          }
-         previous=head;
-         head=head.next;
+
+         else if(current==tail){
+            tail=previous;
+            previous.next=null;
+         }
+         // case 3 : middle
+         else{
+            previous.next=current.next;
+            current.next=null;
+         }
+         }
+         // after deletion
+         size--;
+         previous=current;
+         current=current.next;
       }
    }
 
    public List <PhoneBookNode> findAll(){
       List<PhoneBookNode> AllNames= new ArrayList<>();
-
-      while(head!=null){
-        AllNames.add(head);
-        head=head.next;
+      PhoneBookNode current= head;
+      while(current!=null){
+        AllNames.add(current);
+        current=current.next;
       }
       return AllNames;
    }
 
-   public int getRandomNumber(int min, int max) {
-      return (int) ((Math.random() * (max - min)) + min);
-   }
+
 }
