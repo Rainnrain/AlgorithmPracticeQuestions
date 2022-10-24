@@ -2,87 +2,100 @@ package com.cydeo.PhoneBook;
 
 import lombok.Data;
 import lombok.ToString;
+import org.w3c.dom.Node;
 
 import java.util.*;
 
 @Data
 @ToString
-public class PhoneBook <Entry> {
+public class PhoneBook {
+public PhoneBookNode head;
+public PhoneBookNode tail;
+public int size;
 
-   LinkedList<Entry> data;
+public boolean isEmpty(){
+   return head==null;
+}
 
-   public HashMap<Integer, LinkedList<Entry>> phoneBookData= new HashMap<>();
-
-
-   public PhoneBook() {
-
+public int size(){
+   PhoneBookNode current= head;
+   if(isEmpty()) return 0;
+   int size=0;
+   while(current!=null){
+      current=current.next;
+      size++;
    }
+   return size;
+}
 
-   public  void findByName(String name){
-
-      for (Map.Entry<Integer, LinkedList<Entry>> entry : phoneBookData.entrySet()) {
-         for (Entry data : entry.getValue()) {
-          if( data.toString().contains(name)){
-             System.out.println(entry.getValue());
-          }
-         }
-      }
-   }
-
-   public  void findAllByLastName(String lastName){
-      for (Map.Entry<Integer, LinkedList<Entry>> entry : phoneBookData.entrySet()) {
-         for (Entry data : entry.getValue()) {
-            if( data.toString().contains(lastName)){
-               System.out.println(entry.getValue());
-            }
-         }
-      }
-   }
-
-   public  void deleteByName( String name){
-      for (Map.Entry<Integer, LinkedList<Entry>> entry : phoneBookData.entrySet()) {
-      for (Entry data : entry.getValue()) {
-         if( data.toString().contains(name)){
-            entry.getValue().remove();
-         }
-      }
-   }
-   }
-
-   public  void deleteAllMatchingLastName(String name){
-      for (Map.Entry<Integer, LinkedList<Entry>> entry : phoneBookData.entrySet()) {
-         for (Entry data : entry.getValue()) {
-            if( data.toString().contains(name)){
-               entry.getValue().remove();
-            }
-         }
-      }
-   }
-
-   public ArrayList<Entry> findAll(){
-      ArrayList <Entry> info= new ArrayList<>();
-
-      for (Map.Entry<Integer, LinkedList<Entry>> each : phoneBookData.entrySet()) {
-         for (Entry data : each.getValue()) {
-            info.add(data);
-         }
-      }
-      return info;
-   }
 
    public void printPhoneBook(){
+      PhoneBookNode current= head;
+   while(current!=null){
+      System.out.println(current.contact);
+      current=current.next;
+   }
+    }
 
-      for (Map.Entry<Integer, LinkedList<Entry>> each : phoneBookData.entrySet()) {
-         System.out.println(each.getValue());
-      }
-
+   public void addToPhoneBook(Contact contact){
+   PhoneBookNode phoneBookNode= new PhoneBookNode(contact);
+   phoneBookNode.next=head;
+   head=phoneBookNode;
    }
 
-   public void addToPhoneBook(Entry entry){
-      data=new LinkedList<>();
-      data.add(entry);
-      Integer id= getRandomNumber(0,100000);
-   phoneBookData.put(id, data);
+   public PhoneBookNode findByFirstName(String firstName){
+
+   while(head!=null){
+      if(head.contact.getFirstName().equalsIgnoreCase(firstName)){
+         return head;
+      }
+   }
+   return null;
+   }
+
+   public List<PhoneBookNode> findAllByLastName(String LastName){
+   List<PhoneBookNode> ListOfLastNames= new ArrayList<>();
+
+   while(head!=null){
+      if(head.contact.getLastName().equalsIgnoreCase(LastName)){
+         ListOfLastNames.add(head);
+      }
+   }
+   return ListOfLastNames;
+   }
+
+   public void deleteByFirstName(String firstName){
+   PhoneBookNode previous= head;
+
+   while(head!=null){
+      if(head.contact.getFirstName().equalsIgnoreCase(firstName)){
+         previous.next=head.next;
+      }
+      previous=head;
+      head=head.next;
+   }
+   }
+
+   public void deleteAllMatchingLastName(String LastName){
+      PhoneBookNode previous= head;
+
+      while(head!=null){
+         if(head.contact.getFirstName().equalsIgnoreCase(LastName)){
+            previous.next=head.next;
+         }
+         previous=head;
+         head=head.next;
+      }
+   }
+
+   public List <PhoneBookNode> findAll(){
+      List<PhoneBookNode> AllNames= new ArrayList<>();
+
+      while(head!=null){
+        AllNames.add(head);
+        head=head.next;
+      }
+      return AllNames;
    }
 
    public int getRandomNumber(int min, int max) {
