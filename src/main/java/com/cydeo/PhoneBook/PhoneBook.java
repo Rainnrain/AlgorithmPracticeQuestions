@@ -122,7 +122,7 @@ public int size(){
    }
 
    public void deleteByFirstNameSezgin(String firstName){
-   //O(n) O(1)
+   //O(n)time  O(1)space
    if(isEmpty()){
       throw new NoSuchElementException("No record is available in the phoneBook");
    }
