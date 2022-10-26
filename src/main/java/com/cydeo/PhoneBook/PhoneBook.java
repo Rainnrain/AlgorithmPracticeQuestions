@@ -121,6 +121,37 @@ public int size(){
       }
    }
 
+   public void deleteByFirstNameSezgin(String firstName){
+   //O(n) O(1)
+   if(isEmpty()){
+      throw new NoSuchElementException("No record is available in the phoneBook");
+   }
+   PhoneBookNode previous=head;
+   PhoneBookNode current=head;
+
+   while(current!=null){
+      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
+         if(current==head){
+            if(size==1){
+               head=tail=null;
+            }else{
+               head=current.next;
+            }
+         }else if(current==tail){
+            tail=previous;
+            tail.next=null;
+         }else{
+            previous.next=current.next;
+         }
+         size--;
+         return;
+      }
+      previous=current;
+      current=current.next;
+   }
+   throw new NoSuchElementException("This first name" +firstName+" counld not be matched with any record");
+   }
+
    public List <PhoneBookNode> findAll(){
       List<PhoneBookNode> AllNames= new ArrayList<>();
       PhoneBookNode current= head;
