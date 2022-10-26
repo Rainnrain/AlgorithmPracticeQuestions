@@ -151,7 +151,38 @@ public int size(){
    }
    throw new NoSuchElementException("This first name" +firstName+" counld not be matched with any record");
    }
+   public void deleteAllMatchingLastNameSezgin(String lastName) {
+      int startingSize = size();
+      if (isEmpty()) {
+         throw new NoSuchElementException("No record is available in phone book");
+      }
+      PhoneBookNode previous = head;
+      PhoneBookNode current = head;
+      while (current != null) {
+         if (current.contact.getLastName().equalsIgnoreCase(lastName)) {
+            if (current == head) {
+               if (size == 1) {
+                  head = tail = null;
+               } else {
+                  head = current.next;
+               }
+            } else if (current == tail) {
+               tail = previous;
+               tail.next = null;
+            } else {
+               previous.next = current.next;
+               current = previous;
+            }
+            size--;
+         }
+         previous = current;
+         current = current.next;
+      }
+      if (startingSize == size) {
+         throw new NoSuchElementException("This last name " + lastName + " could not match with any records");
+      }
 
+   }
    public List <PhoneBookNode> findAll(){
       List<PhoneBookNode> AllNames= new ArrayList<>();
       PhoneBookNode current= head;

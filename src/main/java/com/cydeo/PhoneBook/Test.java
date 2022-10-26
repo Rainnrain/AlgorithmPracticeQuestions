@@ -8,6 +8,7 @@ public class Test {
 
 
         Contact entry= new Contact("Lorraine", "Cannom", "LorraineCannom@gmail.com", "519-888-8875");
+        Contact entry12= new Contact("Lorraine", "Cannom", "LorraineCannom@gmail.com", "519-888-8875");
         Contact entry2= new Contact("Ramazan", "Cetintas", "RamazanCetintas@gmail.com", "519-888-8875");
         Contact entry3= new Contact("Leyla", "Cetintas", "RamazanCetintas@gmail.com", "519-888-8875");
         Contact entry4= new Contact("Sema", "Cetintas", "RamazanCetintas@gmail.com", "519-888-8875");
@@ -15,7 +16,8 @@ public class Test {
         Contact entry6= new Contact("Leyla", "Cetintas", "RamazanCetintas@gmail.com", "519-888-8875");
 
         PhoneBook phoneBook = new PhoneBook();
-        phoneBook.addToPhoneBook(entry2);
+        phoneBook.addToPhoneBook(entry12);
+        phoneBook.addToPhoneBook(entry);
         phoneBook.addToPhoneBook(entry3);
         phoneBook.addToPhoneBook(entry);
         phoneBook.addToPhoneBook(entry4);
@@ -27,8 +29,8 @@ public class Test {
 //        System.out.println(phoneBook.isEmpty());
 //        System.out.println(phoneBook.size());
      //  System.out.println(phoneBook.findByFirstName("Ramazan").contact);
-
-        phoneBook.deleteAllMatchingLastName("Cetintas");
+phoneBook.deleteAllMatchingLastNameSezgin("Cetintas");
+       // phoneBook.deleteByFirstNameSezgin("Lorraine");
 
         phoneBook.printPhoneBook();
 //
