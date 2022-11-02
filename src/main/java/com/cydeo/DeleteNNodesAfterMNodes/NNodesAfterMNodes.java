@@ -29,7 +29,7 @@ public class NNodesAfterMNodes {
 
     }
 
-    public static ListNode deleteSkip(ListNode listNode, int n, int m) {
+    public static ListNode deleteSkip(ListNode listNode, int n, int m) { // O(n) Time o(1) space since not passing one node more than once.
 
         ListNode current = listNode;
         ListNode previous = listNode;
@@ -38,7 +38,7 @@ public class NNodesAfterMNodes {
 
         while (current.next != null) {
 
-            for (int i = 0; i < m; i++) {
+            for (int i = 0; i < m; i++) { // could use a while loop w/ M!=0 as the condition and decrease M
                 if(current.next==null){
                    return current;
                 }
@@ -52,8 +52,8 @@ public class NNodesAfterMNodes {
                     current=null;
                     break;
                 }
-                previous.next=current.next;
-                current=current.next;
+                previous.next=current.next;// Rather than this we could make a jump when you exit this loop and assign
+                current=current.next; // the previous.next to current when finished the loop
 
             }
         }

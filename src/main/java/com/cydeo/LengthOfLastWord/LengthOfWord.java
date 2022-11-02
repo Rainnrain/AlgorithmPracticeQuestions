@@ -13,9 +13,8 @@ public class LengthOfWord {
 
     }
 
-    public static String lengthOfLastWord(String str){
+    public static int lengthOfLastWord(String str){
 
-        ArrayDeque<String> unorderedWord=new ArrayDeque<>();
         Stack<String> sentence= new Stack<>();
         String lastWord="";
 
@@ -23,14 +22,9 @@ public class LengthOfWord {
             sentence.push(""+str.charAt(i));
         }
         while(!sentence.peek().equals(" ")){
-            unorderedWord.add(sentence.pop());
+           lastWord+=sentence.pop();
         }
-
-        while(!unorderedWord.isEmpty()){
-            lastWord+=unorderedWord.removeLast();
-        }
-
-        return lastWord;
+        return lastWord.length();
     }
 
 
