@@ -1,36 +1,34 @@
 package com.cydeo.QueueUsingStacks;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
 
 public class MyQueue {
+    ArrayDeque<Integer> stack = new ArrayDeque<>();
 
-    Stack <Integer> stack1= new Stack<>();
-    Stack<Integer> stack2= new Stack<>();
-
-
-    void enqueue(int num){
-        stack1.push(num);
+    @Override
+    public String toString() {
+        return "MyQueue{" + stack + '}';
     }
 
-
-    public int dequeue(){
-        peek();
-        return stack2.pop();
-
-    }
-
-    public int peek(){
-        if(stack2.empty()) {
-            while (!stack1.empty()) {
-                stack2.push(stack1.pop());
-            }
+    public void enqueue(Integer value) {
+        ArrayDeque<Integer> tempStack = new ArrayDeque<>();
+        while (stack.size() > 0) {
+            tempStack.push(stack.pop());
         }
-        return stack2.peek();
+        stack.push(value);
+        while (tempStack.size() > 0) {
+            stack.push(tempStack.pop());
+        }
     }
 
-    boolean isEmpty(){
-        return stack1.empty() && stack2.isEmpty();
+    public Integer dequeue() {
+        return stack.pop();
+    }
+  public boolean isEmpty() {
+        return stack.size() == 0;
     }
 
-
+    public Integer peek() {
+        return stack.peek();
+    }
 }
