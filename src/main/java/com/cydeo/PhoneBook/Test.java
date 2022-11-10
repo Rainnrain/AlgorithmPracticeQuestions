@@ -1,6 +1,8 @@
 package com.cydeo.PhoneBook;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Test {
 
@@ -31,8 +33,11 @@ public class Test {
      //  System.out.println(phoneBook.findByFirstName("Ramazan").contact);
 phoneBook.deleteAllMatchingLastNameSezgin("Cetintas");
        // phoneBook.deleteByFirstNameSezgin("Lorraine");
-
-        phoneBook.printPhoneBook();
+        List<PhoneBookNode> list= phoneBook.findAll();
+        for (PhoneBookNode phoneBookNode : list) {
+            System.out.println(phoneBookNode.contact);
+        }
+      //  phoneBook.printPhoneBook();
 //
 
     }
