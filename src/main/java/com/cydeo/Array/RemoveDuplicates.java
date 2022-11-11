@@ -11,7 +11,7 @@ removeDuplicates(nums);
 
 
 
-    public static void removeDuplicates(int [] nums){
+    public static int removeDuplicates(int [] nums){
 
       int counter=1;
 
@@ -25,6 +25,6 @@ removeDuplicates(nums);
 
 
         }
-        System.out.println(Arrays.toString(nums));
+      return counter;
     }
 }
