@@ -2,14 +2,11 @@ package com.cydeo.BinaryTree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BinaryTreeTransvesal {
 
 
-    public static void main(String[] args) {
-
-
-    }
 
     List<Integer> valuesInTree = new ArrayList<>();
 
@@ -19,7 +16,6 @@ public class BinaryTreeTransvesal {
         if (root == null) {
             return valuesInTree;
         } else {
-
             treeTransversal(root.left);
             valuesInTree.add(root.val);
             treeTransversal(root.right);
@@ -27,7 +23,23 @@ public class BinaryTreeTransvesal {
         }
     }
 
+    public class Solution {
+        public List<Integer> inorderTraversal(TreeNode root) {
+            List<Integer> res = new ArrayList<>();
+            Stack<TreeNode> stack = new Stack<>();
+            TreeNode current = root;
+            while (current != null || !stack.isEmpty()) {
+                while (current != null) {
+                    stack.push(current);
+                    current = current.left;
+                }
 
+                res.add(stack.pop().val);
+                current = current.right;
+            }
+            return res;
+        }
+    }
         public List<Integer> inorderTraversal(TreeNode root) {
             List<Integer> valuesInTree= new ArrayList<>();
 
@@ -45,4 +57,7 @@ public class BinaryTreeTransvesal {
                 helper(root.right, res);
             }
         }
+
+
+
 }
