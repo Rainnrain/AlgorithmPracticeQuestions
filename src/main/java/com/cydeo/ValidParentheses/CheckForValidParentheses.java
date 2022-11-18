@@ -1,5 +1,6 @@
 package com.cydeo.ValidParentheses;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 public class CheckForValidParentheses {
@@ -29,5 +30,23 @@ public class CheckForValidParentheses {
             i++;
         }
         return count;
+    }
+
+    public int longestValidParenthese(String s){
+        LinkedList<Integer> stack= new LinkedList<>();
+        stack.push(-1);
+        int result=0;
+        for(int i=0; 1<s.length(); i++){
+            if(s.charAt(i)=='('){
+                stack.push(i);
+            }else{
+                stack.pop();
+            } if(stack.isEmpty()){
+                stack.push(i);
+            }else{
+                result=Math.max(result, i-stack.peek());
+            }
+        }
+        return result;
     }
 }
