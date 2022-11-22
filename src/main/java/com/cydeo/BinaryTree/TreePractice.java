@@ -14,14 +14,22 @@ public class TreePractice {
     }
 
 
-    public boolean sameTree(TreeNode p, TreeNode q){
-        boolean same=false;
-        while(root==null||p.val==q.val){
-            sameTree( p.left, q.left);
-            sameTree(p.right, q.right);
-        }
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+        boolean same=true;
 
-        if(root==null) same=true;
-        return same;
+        if(p==null && q== null){
+            return same;
+
+        }
+        if(p==null || q==null){
+            return same= false;
+        }
+        if(q.val!=p.val ){
+            return same= false;}
+
+
+        return isSameTree( p.left, q.left)&&
+                isSameTree(p.right, q.right);
+
     }
 }
