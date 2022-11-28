@@ -1,6 +1,6 @@
 package com.cydeo.BinaryTree;
 
-public class TreePractice {
+public class RangeSumClass {
 
     TreeNode root;
     public int rangeSum(TreeNode node, int low, int high){
@@ -14,22 +14,5 @@ public class TreePractice {
     }
 
 
-    public boolean isSameTree(TreeNode p, TreeNode q) {
-        boolean same=true;
 
-        if(p==null && q== null){
-            return same;
-
-        }
-        if(p==null || q==null){
-            return same= false;
-        }
-        if(q.val!=p.val ){
-            return same= false;}
-
-
-        return isSameTree( p.left, q.left)&&
-                isSameTree(p.right, q.right);
-
-    }
 }

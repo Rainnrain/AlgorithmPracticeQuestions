@@ -4,7 +4,7 @@ public class SumOfDigits {
 
 
     public static void main(String[] args) {
-
+        System.out.println(addDigits(38));
     }
 
 
@@ -24,4 +24,23 @@ public class SumOfDigits {
         }
         return total;
     }
-}
+
+    public static int addDigits2(int num) {
+
+
+            if ( num == 0 ) return 0;
+            return num%9 == 0 ? 9 : num%9 ;
+        }
+
+
+    public static int addDigits(int num) {
+        int result = 0;
+        while (num > 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        if (result < 10) return result;
+        return addDigits(result);
+    }
+    }
+
