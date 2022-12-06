@@ -11,7 +11,7 @@ public class SumOfDigits {
     public static int Sum(int num){
         int total=0;
         if(num>=10){
-          String [] values= String.valueOf(num).split("");
+          String [] values= String.valueOf(num).split(""); "1","2","3"
             for (int i = 0; i < values.length ; i++) {
                total+= Integer.parseInt(values[i]);
             }
@@ -33,7 +33,7 @@ public class SumOfDigits {
         }
 
 
-    public static int addDigits(int num) {
+    public static int addDigits(int num) { // num=1
         int result = 0;
         while (num > 0) {
             result += num % 10;
@@ -42,5 +42,8 @@ public class SumOfDigits {
         if (result < 10) return result;
         return addDigits(result);
     }
+
+
+
     }
 
