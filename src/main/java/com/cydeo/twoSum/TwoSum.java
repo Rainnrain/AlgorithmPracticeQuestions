@@ -7,7 +7,7 @@ public class TwoSum {
 
       int [] nums= {16,3,11,5,15};
       // System.out.println(Arrays.asList(twoSum(nums, 8)));
-     //  System.out.println(Arrays.asList(twoSumIndex(nums, 8)));
+     // System.out.println(Arrays.asList(twoSumIndex(nums, 8)));
      //   System.out.println(findThePairNumbers(nums, 8));
         System.out.println( Arrays.toString( findThePairNumbers(nums, 8))  );
     }
