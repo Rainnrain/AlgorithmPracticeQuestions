@@ -9,7 +9,8 @@ import java.util.Map;
 public class Practice {
     public static void main(String[] args) {
 
-String str= "This is an  example!  of Example";
+String str= "This is an _ example-  of Example";
+removeSpace(str);
 
         System.out.println(frequencyOfWords(str));
     }
@@ -37,5 +38,10 @@ String str= "This is an  example!  of Example";
         }
         return freq;
 
+    }
+
+    public static void removeSpace(String str){
+       String []string= str.split("[-_]+");
+        System.out.println(Arrays.toString(string));
     }
 }
