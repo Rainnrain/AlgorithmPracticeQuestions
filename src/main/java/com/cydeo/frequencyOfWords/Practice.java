@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Practice {
     public static void main(String[] args) {
@@ -43,5 +45,19 @@ removeSpace(str);
     public static void removeSpace(String str){
        String []string= str.split("[-_]+");
         System.out.println(Arrays.toString(string));
+    }
+
+    public static Map <String, Long> withStreamLong(String str){
+        if(str==null) return null;
+
+        return Arrays.stream(str.trim().toLowerCase().split("[^A-Za-z]+"))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+    }
+
+    public static Map <String, Integer> withStream(String str){
+        if(str==null) return null;
+
+        return Arrays.stream(str.trim().toLowerCase().split("\\W+"))
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(s->1)));
     }
 }

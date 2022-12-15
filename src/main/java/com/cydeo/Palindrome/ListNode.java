@@ -2,9 +2,9 @@ package com.cydeo.Palindrome;
 
 public class ListNode {
     ListNode next;
-    int value;
+  Integer  value;
 
-    public ListNode(int value) {
+    public ListNode(Integer value) {
         this.value = value;
         next=null;
     }
