@@ -1,4 +1,4 @@
-package com.cydeo.arrayExceptSelf;
+package com.cydeo.TimeNeededtoBuyTickets.arrayExceptSelf;
 
 import java.util.Arrays;
 
