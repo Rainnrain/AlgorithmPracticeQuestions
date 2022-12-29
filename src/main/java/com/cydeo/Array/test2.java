@@ -16,21 +16,31 @@ public class test2 {
     String id;
 
 
+
+
+//    public static void main(String[] args) {
+//        List<test2> cat= new ArrayList<>();
+//        test2 test20=new test2("goat", "p-003");
+//        test2 test3=new test2("boat", "p-004");
+//        test2 test=new test2("cat", "p-001");
+//        test2 test1=new test2("dog", "p-002");
+//        cat.add(test20);
+//        cat.add(test3);
+//        cat.add(test);
+//        cat.add(test1);
+//
+//        System.out.println(cat);
+//       List<test2> testtest= cat.stream().sorted(Comparator.comparing(test2::getId)).collect(Collectors.toList());
+//        System.out.println(testtest );
+//
+//    }
+
+
     public static void main(String[] args) {
-        List<test2> cat= new ArrayList<>();
-        test2 test20=new test2("goat", "p-003");
-        test2 test3=new test2("boat", "p-004");
-        test2 test=new test2("cat", "p-001");
-        test2 test1=new test2("dog", "p-002");
-        cat.add(test20);
-        cat.add(test3);
-        cat.add(test);
-        cat.add(test1);
-
-        System.out.println(cat);
-       List<test2> testtest= cat.stream().sorted(Comparator.comparing(test2::getId)).collect(Collectors.toList());
-        System.out.println(testtest );
-
+        String str="S";
+        String str2=String.format("%03d",12 );
+        String str5 = String.format("|%010d|", 101);
+        System.out.println(str2);
+        System.out.println(str5);
     }
-
 }
