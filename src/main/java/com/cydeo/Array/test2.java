@@ -37,7 +37,7 @@ public class test2 {
 
 
     public static void main(String[] args) {
-        String str="S";
+        String str="Sd";
         String str2=String.format("%03d",12 );
         String str5 = String.format("|%010d|", 101);
         System.out.println(str2);
