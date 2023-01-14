@@ -38,7 +38,7 @@ public class intersection {
             while(current2!=null){
 
             if(current==current2){
-                return current.value;
+                return  current.value;
             }
                 current2=current2.next;
             }
