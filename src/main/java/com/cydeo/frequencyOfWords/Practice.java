@@ -15,6 +15,7 @@ String str= "This is an _ example-  of Example";
 removeSpace(str);
 
         System.out.println(frequencyOfWords(str));
+        System.out.println(frequencyOfLetters(str));
     }
 
     public static Map<String, Integer> frequencyOfWords(String str){
@@ -59,5 +60,17 @@ removeSpace(str);
 
         return Arrays.stream(str.trim().toLowerCase().split("\\W+"))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.summingInt(s->1)));
+    }
+
+    public static Map<Character,Integer> frequencyOfLetters(String str){
+        String str2=str.toLowerCase();
+        Map<Character, Integer> freqOfLetter= new HashMap<>();
+        for(int i=0; i<str2.length(); i++){
+
+           if(Character.isLetter(str2.charAt(i))){
+               freqOfLetter.put(str2.charAt(i), freqOfLetter.getOrDefault(str2.charAt(i),0)+1 );
+           }
+        }
+        return freqOfLetter;
     }
 }
