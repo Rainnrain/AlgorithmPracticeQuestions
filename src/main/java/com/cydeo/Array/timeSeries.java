@@ -38,6 +38,8 @@ public class timeSeries {
         map2.put(5,1.0);
         System.out.println(totalTime(map1, map2));
 
+
+
     }
 
     public static Map<Integer, Double> totalTime(Map<Integer, Double> map1, Map<Integer, Double> map2){
