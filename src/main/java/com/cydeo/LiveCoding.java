@@ -1,7 +1,6 @@
 package com.cydeo;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class LiveCoding {
 /*
@@ -39,19 +38,35 @@ public class LiveCoding {
 
     public static void main(String[] args) {
         String str= "aab";
+        String str2= "abcabcbb";
+
+
+
         System.out.println(lengthOfLongestSubstring2(str));
         System.out.println(lengthOfLongestSubstring(str));
+        System.out.println(lengthOfLongestBruteForce(str));
+
+        List<String> syncCollection = Collections.synchronizedList(Arrays.asList("a", "b", "c"));
+        List<String> uppercasedCollection = new ArrayList<>();
+
+        Runnable listOperations = () -> {
+            synchronized (syncCollection) {
+                syncCollection.forEach((e) -> {
+                    uppercasedCollection.add(e.toUpperCase());
+                });
+            }
+        };
 
     }
 
     public static int lengthOfLongestSubstring(String str) {
 
-
-        Set<Character> letters= new HashSet<>();
+//a,  ab
+        Set<Character> letters= new HashSet<>();// bc
 
         if(str.length()==0) return 0;
 
-        int max =0;
+        int max =0; //3
 
 
         for(int i=0, j=0; i<str.length(); i++){
@@ -61,14 +76,13 @@ public class LiveCoding {
                 max = Math.max(max, letters.size());
             } else{
                 letters.remove(str.charAt(j++));
+                i--;
             }
         }
 
         return max;
 
                 }
-
-
 
 
     public static int lengthOfLongestSubstring2(String s){
@@ -86,6 +100,27 @@ public class LiveCoding {
          }
          return max;
 } 
+
+    public static int lengthOfLongestBruteForce(String s){
+
+        String str="";
+        int max=0;
+        for (int i = 0; i < s.length(); i++) {
+
+            if(str.contains(""+s.charAt(i))){
+                i--;
+                max=Math.max(max, str.length());
+                str="";
+
+            }else{
+                str+=s.charAt(i);
+                max=Math.max(max, str.length());
+            }
+
+        }
+        return max;
+
+    }
 
     }
 
