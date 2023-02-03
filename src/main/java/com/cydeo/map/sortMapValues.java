@@ -42,6 +42,17 @@ public class sortMapValues {
         return map;
 
     }
+
+//    public static Map<String, Integer> sortByValueAttempt(Map<String, Integer> map){
+//    List<Map.Entry<String, Integer>> list= new ArrayList<>(map.entrySet());
+//    list.sort(Map.Entry.comparingByValue());
+//    map=new LinkedHashMap<>();
+//
+//    Collections.sort(Arrays.asList(map.entrySet().toArray()),List<Integer> );
+//        for (Map.Entry<String, Integer> stringIntegerEntry : list()) {
+//
+//        }
+//    }
 }
 
 
