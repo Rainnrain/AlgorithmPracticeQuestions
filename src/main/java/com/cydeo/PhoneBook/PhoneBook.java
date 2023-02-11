@@ -1,197 +1,138 @@
 package com.cydeo.PhoneBook;
 
-import lombok.Data;
-import lombok.ToString;
-import org.w3c.dom.Node;
+import com.cydeo.PhoneBook.mine.PhoneBookNode;
 
-import java.util.*;
-
-@Data
-@ToString
 public class PhoneBook {
-public PhoneBookNode head;
-public PhoneBookNode tail;
-public int size;
+    Node head;
+    Node tail;
+    int size;
 
-   Map<String, PhoneBookNode> nodesMap = new HashMap<>();
-public boolean isEmpty(){
-   return head==null;
-}
-
-public int size(){
-   PhoneBookNode current= head;
-   if(isEmpty()) return 0;
-   int size=0;
-   while(current!=null){
-      current=current.next;
-      size++;
-   }
-   return size;
-}
-
-
-   public void printPhoneBook(){
-      PhoneBookNode current= head;
-   while(current!=null){
-      System.out.println(current.contact);
-      current=current.next;
-   }
+    public PhoneBook() {
+        this.head = null;
+        this.tail = null;
+        this.size = 0;
     }
 
-   public void addToPhoneBook(Contact contact){
+    public int size(){
+    return size;
+    }
 
-   PhoneBookNode phoneBookNode= new PhoneBookNode(contact);
-   phoneBookNode.next=head;
-   head=phoneBookNode;
+    public boolean isEmpty(){
+        return head==null;
+    }
 
-      nodesMap.put(contact.getFirstName()+" "+contact.getLastName(),phoneBookNode);
-   }
+    public void add(Node node){
+        if(isEmpty()){
+            head=node;
+            tail=node;
+        }else{
+            tail.next=node;
+            tail=node;
+        }
+        size++;
+    }
 
-   public PhoneBookNode findByFirstName(String firstName){
+    public void print(){
+        Node current=head;
+        while(current!=null){
+            System.out.println(current.firstName);
+            current=current.next;
+        }
+    }
+
+    public int indexOf(String email){
+
+        Node current= head;
+        int count=0;
+
+        while(current!=null) {
+
+            if (current.email.equalsIgnoreCase(email)){
+                return count;
+        }
+            count++;
+            current=current.next;
+        }
+       return -1;
+    }
 
 
-      PhoneBookNode current= head;
-   while(current!=null){
-      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
-         return current;
-      }
-      current=current.next;
-   }
-   return null;
-   }
+    public int findByFirstName(String firstName){
+        Node current= head;
+        int index=0;
 
-   public List<PhoneBookNode> findAllByLastName(String LastName){
-   List<PhoneBookNode> ListOfLastNames= new ArrayList<>();
-      PhoneBookNode current= head;
-   while(current!=null){
-      if(current.contact.getLastName().equalsIgnoreCase(LastName)){
-         ListOfLastNames.add(current);
-      }
-      current=current.next;
-   }
-   return ListOfLastNames;
-   }
+        while(current!=null){
+            if(current.firstName.equalsIgnoreCase(firstName)){
+                return index;}
 
-   public void deleteByFirstName(String firstName){
-   PhoneBookNode previous= head;
-      PhoneBookNode current= head;
+            current=current.next;
+            index++;
+        }
+        return -1;
+    }
 
-   while(current!=null){
-      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
-         previous.next=current.next;
-      }
-      previous=current;
-      current=current.next;
-   }
-   }
+    public void sortByName(){
+        Node current1=head;
+        if(current1==tail) return;
 
-   public void deleteAllMatchingLastName(String LastName){
-      PhoneBookNode previous= head;
-      PhoneBookNode current= head;
+        Node current2;
 
-      while(current!=null){
-         if(current.contact.getLastName().equalsIgnoreCase(LastName)){
+        boolean swap=true;
+        while(swap){
+            swap=false;
+            current1= head;
+            current2=head.next;
 
-         if(current==head){
-            head=current.next;
-            current.next=null;
-            current=head;
-            previous=head;
-            continue;
-         }
-
-         else if(current==tail){
-            tail=previous;
-            previous.next=null;
-
-         }
-         // case 3 : middle
-         else{
-            previous.next=current.next;
-            current.next=null;
-            current=previous.next;
-            continue;
-
-         }
-         }
-         // after deletion
-
-         previous=current;
-         current=current.next;
-      }
-   }
-
-   public void deleteByFirstNameSezgin(String firstName){
-   //O(n)time  O(1)space
-   if(isEmpty()){
-      throw new NoSuchElementException("No record is available in the phoneBook");
-   }
-   PhoneBookNode previous=head;
-   PhoneBookNode current=head;
-
-   while(current!=null){
-      if(current.contact.getFirstName().equalsIgnoreCase(firstName)){
-         if(current==head){
-            if(size==1){
-               head=tail=null;
-            }else{
-               head=current.next;
+            while(current1!=null && current2!=null){
+                if(current1.firstName.compareToIgnoreCase(current2.firstName)>0){
+                    swap=true;
+                    swapData(current1, current2);
+                }
+                current1=current1.next;
+                current2=current2.next;
             }
-         }else if(current==tail){
-            tail=previous;
-            tail.next=null;
-         }else{
-            previous.next=current.next;
-         }
-         size--;
-         return;
-      }
-      previous=current;
-      current=current.next;
-   }
-   throw new NoSuchElementException("This first name" +firstName+" counld not be matched with any record");
-   }
-   public void deleteAllMatchingLastNameSezgin(String lastName) {
-      int startingSize = size();
-      if (isEmpty()) {
-         throw new NoSuchElementException("No record is available in phone book");
-      }
-      PhoneBookNode previous = head;
-      PhoneBookNode current = head;
-      while (current != null) {
-         if (current.contact.getLastName().equalsIgnoreCase(lastName)) {
-            if (current == head) {
-               if (size == 1) {
-                  head = tail = null;
-               } else {
-                  head = current.next;
-               }
-            } else if (current == tail) {
-               tail = previous;
-               tail.next = null;
-            } else {
-               previous.next = current.next;
-               current = previous;
+        }
+    }
+
+    public void swapData(Node current1, Node current2){
+        Node temp=new Node(current2.firstName, current2.lastName, current2.email, current2.phoneNumber);
+
+        current2.firstName=current1.firstName;
+        current2.lastName=current1.lastName;
+        current2.email=current1.lastName;
+        current2.phoneNumber=current1.phoneNumber;
+
+        current1.firstName= temp.firstName;
+        current1.lastName=temp.lastName;
+        current1.email=temp.email;
+        current1.phoneNumber= temp.phoneNumber;
+
+
+    }
+
+
+    public void deleteByEmail(String email) {
+        Node previous = head;
+        Node current = head;
+
+        while (current != null) {
+            if (current.email.equalsIgnoreCase(email)) {
+                if (current == head) {
+                    if (size == 1) {
+                        head = tail = null;
+                    } else {
+                        head = current.next;
+                    }
+                } else if (current == tail) {
+                    tail = previous;
+                    tail.next = null;
+                } else {
+                    previous.next = current.next;
+                }
+                size--;
             }
-            size--;
-         }
-         previous = current;
-         current = current.next;
-      }
-      if (startingSize == size) {
-         throw new NoSuchElementException("This last name " + lastName + " could not match with any records");
-      }
-
-   }
-   public List <PhoneBookNode> findAll(){
-      List<PhoneBookNode> AllNames= new ArrayList<>();
-      PhoneBookNode current= head;
-      while(current!=null){
-        AllNames.add(current);
-        current=current.next;
-      }
-      return AllNames;
-   }
-
-
+            previous = current;
+            current = current.next;
+        }
+    }
 }

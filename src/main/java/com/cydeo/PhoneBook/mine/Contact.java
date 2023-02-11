@@ -1,4 +1,4 @@
-package com.cydeo.PhoneBook;
+package com.cydeo.PhoneBook.mine;
 import lombok.Data;
 import lombok.ToString;
 

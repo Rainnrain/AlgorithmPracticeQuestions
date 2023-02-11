@@ -1,4 +1,4 @@
-package com.cydeo.PhoneBook;
+package com.cydeo.PhoneBook.mine;
 
 public class PhoneBookNode {
     public Contact contact;
