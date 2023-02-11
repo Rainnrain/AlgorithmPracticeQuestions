@@ -6,6 +6,11 @@ import java.util.List;
 public class Cat extends Animal {
     String name;
 
+    @Override
+    void canThisBeOverrident() {
+        System.out.println("This is the second");
+    }
+
     public Cat(String name) {
         this.name = name;
     }
@@ -23,6 +28,8 @@ public class Cat extends Animal {
         Object cat2 = new Cat("Sunday");
         List<Cat> cats = new ArrayList<>();
         cats.add(cat);
+
+        cat.canThisBeOverrident();
 
 
         Object cat3 = cats;
