@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Practice {
@@ -16,6 +17,14 @@ Cat cat= new Cat("Joe");
 
 String str= "This is an _ example-  of Example";
 removeSpace(str);
+
+        Predicate predicate= new Predicate() {
+            @Override
+            public boolean test(Object o) {
+                return false;
+            }
+        };
+
 
         System.out.println(frequencyOfWords(str));
         System.out.println(frequencyOfLetters(str));
