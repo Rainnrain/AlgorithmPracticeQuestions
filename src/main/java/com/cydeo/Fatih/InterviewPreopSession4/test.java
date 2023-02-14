@@ -13,7 +13,6 @@ public class test {
 
             if (Character.isDigit(str.charAt(i)))
                 num = num * 10 + (str.charAt(i)-'0');
-
                 // Update maximum value
             else {
                 res = Math.max(res, num);
