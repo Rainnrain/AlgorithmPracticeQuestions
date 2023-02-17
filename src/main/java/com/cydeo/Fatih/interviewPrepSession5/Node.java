@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 @ToString
-public class Node {
+class Node {
 
         int value;
 
@@ -14,6 +14,8 @@ public class Node {
             this.value = value;
         }
     }
+
+
 @ToString
 class LRUCache {
         Map<Integer, Node> lastAccessed= new LinkedHashMap<>();
@@ -30,7 +32,6 @@ class LRUCache {
                 Node node= lastAccessed.get(key);
                 lastAccessed.remove(key);
                 lastAccessed.put(key, node);
-                System.out.println(node.value);
                 return node.value;
             }else{
                 return -1;
@@ -41,24 +42,42 @@ class LRUCache {
         public void put(int key, int value) {
             Node node= new Node(value);
 
-            if(lastAccessed.size()<capacity && !lastAccessed.containsKey(key)){
-                lastAccessed.put(key, node);
-
-            }else{
-
-                if(!lastAccessed.containsKey(key)){
+            if(lastAccessed.size()==capacity && !lastAccessed.containsKey(key)){
 
                     Iterator<Map.Entry<Integer, Node>> it = lastAccessed.entrySet().iterator();
-
                     Map.Entry<Integer, Node> entry = it.next();
                     lastAccessed.remove(entry.getKey());
-
-                }else{
+            }
+            if(lastAccessed.containsKey(key)){
                     lastAccessed.remove(key);
                 }
-                lastAccessed.put(key, node);
+
+            lastAccessed.put(key, node);
 
             }
-        }
+
+
+//    public void put(int key, int value) {
+//        Node node= new Node(value);
+//
+//        if(lastAccessed.size()<capacity && !lastAccessed.containsKey(key)){
+//            lastAccessed.put(key, node);
+//
+//        }else{
+//
+//            if(!lastAccessed.containsKey(key)){
+//
+//                Iterator<Map.Entry<Integer, Node>> it = lastAccessed.entrySet().iterator();
+//
+//                Map.Entry<Integer, Node> entry = it.next();
+//                lastAccessed.remove(entry.getKey());
+//
+//            }else{
+//                lastAccessed.remove(key);
+//            }
+//            lastAccessed.put(key, node);
+//
+//        }
+  //  }
     }
 
