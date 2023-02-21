@@ -41,18 +41,38 @@ public class PhoneBookTree {
         System.out.print(root.firstName +", ");
         printNamesInAscOrder(root.rightChild);
     }
-    List <String> names= new ArrayList<>();
+
+
     List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
-
+        List<String> names= new ArrayList<>();
         if (root==null) return null; // termination
-
-        firstNamesList(root.leftChild);
-        names.add(root.firstName);
-        firstNamesList(root.rightChild);
+        helper(root, names);
         return names;
     }
 
-    // return size or number of entries in the phonebook
+
+    void helper(CustomerNode root, List<String> names) {
+        if (root != null) {
+            helper(root.leftChild, names);
+            names.add(root.firstName);
+            helper(root.rightChild, names);
+        }
+    }
+
+
+
+//    List <String> names= new ArrayList<>();
+//    List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
+//
+//        if (root==null) return null; // termination
+//
+//        firstNamesList(root.leftChild);
+//        names.add(root.firstName);
+//        firstNamesList(root.rightChild);
+//        return names;
+//    }
+//
+//    // return size or number of entries in the phonebook
 
 
 }
