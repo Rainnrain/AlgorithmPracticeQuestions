@@ -12,6 +12,7 @@ public class ReverseWords {
             }
         }
         return rev.toString().trim();
+
     }
 
     public String reverseWords2(String s) {
