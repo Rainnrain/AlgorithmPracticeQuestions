@@ -5,7 +5,7 @@ package com.cydeo;
     static int N;
 
     public void printOddNumber(){
-        synchronized (this) {
+       synchronized (this) {
             while (counter < N) {
 
                 while (counter % 2 == 0) {
@@ -24,11 +24,11 @@ package com.cydeo;
                 notify();
             }
         }
-    }
+   }
 
     // Function to print even numbers
     public void printEvenNumber() {
-        synchronized (this)
+       synchronized (this)
         {
             while (counter < N) {
 
