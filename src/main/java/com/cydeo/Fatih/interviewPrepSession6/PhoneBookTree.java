@@ -15,20 +15,16 @@ public class PhoneBookTree {
             while(true){
                 if (newNode.firstName.compareToIgnoreCase(current.firstName)<0){
                     if (current.leftChild==null){
-                        // if left is null insert there!!!
                         current.leftChild=newNode;
                         break;
                     }
-                    //if leftChild is not null branch into left subtree!!
                     current=current.leftChild;
                 }
                 else {
                     if (current.rightChild==null){
-                        // if right is null insert there!!!
                         current.rightChild=newNode;
                         break;
                     }
-                    //if rightChild is not null branch into right subtree!!
                     current=current.rightChild;
                 }
             }
@@ -45,7 +41,7 @@ public class PhoneBookTree {
 
     List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
         List<String> names= new ArrayList<>();
-        if (root==null) return null; // termination
+        if (root==null) return null;
         helper(root, names);
         return names;
     }
@@ -59,7 +55,13 @@ public class PhoneBookTree {
         }
     }
 
-
+//    void helper(CustomerNode root, List<String> names) {
+//        if (root==null) return;
+//        helper(root.leftChild, names);
+//        names.add(root.firstName);
+//        helper(root.rightChild, names);
+//
+//    }
 
 //    List <String> names= new ArrayList<>();
 //    List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
