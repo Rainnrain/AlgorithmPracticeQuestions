@@ -7,8 +7,9 @@ import java.util.Map;
 
 public class MaxSubarray {
     public static void main(String[] args) {
-        int[] ar = {2, -8, 3, -2, 4, -10};
-        System.out.println(maxProduct2(ar));
+        int[] ar = {-2,1};
+        System.out.println(maxsum(ar));
+        System.out.println(maxSubArray(ar));
     }
 
     public static int maxProduct(int[] nums) {
@@ -90,5 +91,48 @@ public class MaxSubarray {
             result = Math.max(result, Collections.max(cnt.values()) + 1);
         }
         return result;
+    }
+
+
+    public static int maxSubArray(int[] nums) {
+// doesn't work
+        int left=0;
+        int right=nums.length-1;
+        int sum=nums[0];
+        Integer max=Integer.MIN_VALUE;
+
+        while(left<right){
+            sum=0;
+            for(int i=left; i<=right; i++){
+                sum+=nums[i];
+            }
+            if(nums[left]<=nums[right]) left++;
+            if(nums[left]>=nums[right]) right--;
+
+
+            max=Math.max(sum, max);
+
+        }
+
+        return Math.max(sum, max);
+
+    }
+
+
+    public int maxSubArray2(int[] nums) {
+
+        int prev = nums[0];
+        int max = prev;
+        for(int i = 1; i < nums.length; i++){
+            int cur = 0;
+            if(prev < 0){
+                cur = nums[i];
+            }else{
+                cur = nums[i] + prev;
+            }
+            prev = cur;
+            max = Math.max(max, cur);
+        }
+        return max;
     }
 }
