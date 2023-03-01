@@ -7,9 +7,9 @@ import java.util.Map;
 
 public class MaxSubarray {
     public static void main(String[] args) {
-        int[] ar = {-2,1};
+        int[] ar = {-2,1,-3,4,-1,2,1,-5,4};
         System.out.println(maxsum(ar));
-        System.out.println(maxSubArray(ar));
+        System.out.println(maxSubArray2(ar));
     }
 
     public static int maxProduct(int[] nums) {
@@ -119,7 +119,7 @@ public class MaxSubarray {
     }
 
 
-    public int maxSubArray2(int[] nums) {
+    public static int maxSubArray2(int[] nums) {
 
         int prev = nums[0];
         int max = prev;

@@ -2,6 +2,7 @@ package com.cydeo.Fatih.interviewPrepSession6;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class PhoneBookTree {
     CustomerNode root;
@@ -39,20 +40,36 @@ public class PhoneBookTree {
     }
 
 
-    List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
-        List<String> names= new ArrayList<>();
-        if (root==null) return null;
-        helper(root, names);
+
+    List<String> firstNameList2(CustomerNode root, List<String> names) {
+        if(root==null) return names;
+
+            firstNameList2(root.leftChild, names);
+            names.add(root.firstName);
+            firstNameList2(root.rightChild, names);
+
         return names;
     }
 
 
-    void helper(CustomerNode root, List<String> names) {
-        if (root != null) {
-            helper(root.leftChild, names);
-            names.add(root.firstName);
-            helper(root.rightChild, names);
+    //iterative approach
+
+    List<String> firstNamesListIterative(CustomerNode root){
+        List<String> list= new ArrayList<>();
+
+        Stack<CustomerNode> stack= new Stack<>();
+
+        while(!stack.isEmpty()|| root!=null){
+            if(root!=null){
+                stack.push(root);
+                root=root.leftChild;
+            }else{// root is null
+                root=stack.pop();
+                list.add(root.firstName);
+                root=root.rightChild;
+            }
         }
+        return list;
     }
 
 //    void helper(CustomerNode root, List<String> names) {
@@ -73,9 +90,16 @@ public class PhoneBookTree {
 //        firstNamesList(root.rightChild);
 //        return names;
 //    }
-//
+
 //    // return size or number of entries in the phonebook
 
+
+    //    List<String> firstNamesList(CustomerNode root){ // This is an In Order Traversal Iteratively
+//        List<String> names= new ArrayList<>();
+//        if (root==null) return null;
+//        helper(root, names);
+//        return names;
+//    }
 
 }
 

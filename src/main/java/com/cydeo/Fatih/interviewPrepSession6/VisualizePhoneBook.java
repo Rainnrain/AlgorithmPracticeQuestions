@@ -7,7 +7,6 @@ public class VisualizePhoneBook {
         if (root == null) {
             return;
         }
-
         String prev_str = "    ";
         Trunk trunk = new Trunk(prev, prev_str);
 

@@ -1,5 +1,6 @@
 package com.cydeo.Fatih.interviewPrepSession6;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PhoneBookTreeApp {
@@ -25,7 +26,7 @@ public class PhoneBookTreeApp {
        phoneTree.printNamesInAscOrder(phoneTree.root);
         System.out.println();
         System.out.println("----------------------------");
-        List<String> result=phoneTree.firstNamesList(phoneTree.root);
+        List<String> result=phoneTree.firstNameList2(phoneTree.root, new ArrayList<>());
         System.out.println(result);
     }
 }
