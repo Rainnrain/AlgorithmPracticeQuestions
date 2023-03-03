@@ -27,12 +27,12 @@ public class SpiralTransverse {
             int endRow = ar.length - 1 - it;
 
             while (startCol < endCol) {
-                ordered[index++] = ar[startRow][startCol++]; // ar[0,3]
+                ordered[index++] = ar[startRow][startCol++];
 
             }
             startCol = it;
             while (startRow < endRow) {
-                ordered[index++] = ar[startRow++][endCol]; //ar[3,3]
+                ordered[index++] = ar[startRow++][endCol];
             }
             startRow = it;
             while (endCol > startCol) {
