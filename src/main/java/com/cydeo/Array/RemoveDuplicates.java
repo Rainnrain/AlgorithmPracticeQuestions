@@ -27,4 +27,15 @@ removeDuplicates(nums);
         }
       return counter;
     }
+
+    public static int removeDup(int [] nums){
+
+    int count=1; // Keep first element
+
+        for (int i = 0; i <nums.length ; i++) {
+// check that current is not equal to previous
+            if(nums[i-1]!=nums[i]) nums[count++]=nums[i];
+        }
+        return count;
+    }
 }

@@ -13,7 +13,7 @@ public class multiplicationOfPrevious {
 
     public static Integer[] MultiplyArray(Integer [] arr){
     int temp=arr[0];
-    int holder;
+    int current;
         for (int i = 0; i <arr.length ; i++) {
 
             if(i==0){
@@ -24,9 +24,9 @@ public class multiplicationOfPrevious {
                 arr[i]=arr[i]*temp;
                 continue;
             }
-            holder=arr[i];
+            current=arr[i];
             arr[i]=temp*arr[i+1];
-            temp=holder;
+            temp=current;
         }
         return arr;
     }
