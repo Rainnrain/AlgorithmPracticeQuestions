@@ -2,47 +2,57 @@ package com.cydeo.Array;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class MinDifference {
-
+    //https://leetcode.com/problems/minimum-absolute-difference/
     public static void main(String[] args) {
-        int [] ar={1,3,6,10,15};
-        System.out.println( minimumAbsDifference(ar));
+        int[] ar = {1, 3, 6, 10, 15};
+     //   System.out.println(minimumAbsDifference(ar));
+        System.out.println(minAbsDiff(ar));
     }
 
     public static List<List<Integer>> minimumAbsDifference(int[] arr) {
 
-        Integer diff= Integer.MAX_VALUE;
-        for(int i=0; i<arr.length-1; i++){
+        List<List<Integer>> res= new ArrayList<>();
+        //in a sorted array consecutive numbers have the least min diff
+        Arrays.sort(arr);
+        int min =Integer.MAX_VALUE;
 
-            for(int j=1; j<arr.length-1; i++){
+        for(int i=0;i< arr.length-1;i++){
+            int diff=arr[i+1]-arr[i];
+            //we found a new min difference
+            if(diff < min){
+                min =diff;
+                res.clear();
+                res.add(Arrays.asList(arr[i], arr[i+1]));
+            }
+            else if(diff == min)
+                res.add(Arrays.asList(arr[i], arr[i+1]));
+        }
+        return res;
+    }
 
-                diff=Math.min((Math.abs(arr[i]-arr[j])),diff);
+    public static List<List<Integer>> minAbsDiff(int[] arr) {
+        List<List<Integer>> minDiffList = new ArrayList<>();
+        Arrays.sort(arr);
+        int min = Integer.MAX_VALUE;
+
+        for (int i = 0; i < arr.length - 1; i++) {
+
+
+            if (min > Math.abs(arr[i + 1] - arr[i])) {
+                minDiffList.clear();
+                min = Math.abs(arr[i + 1] - arr[i]);
+            }
+            if (min == Math.abs(arr[i + 1] - arr[i])) {
+                minDiffList.add(new ArrayList<>(Arrays.asList(arr[i], arr[i + 1])));
             }
         }
-        List<List<Integer>> list= new ArrayList<>();
-        for(int k=0; k<arr.length; k++){
-
-            for(int l=1; l<arr.length; l++){
-
-                if( Math.abs(arr[k]-arr[l])==diff){
-                    List<Integer> in=new ArrayList<>();
-                    int a=Math.min(arr[k], arr[l]);
-                    int b=Math.max(arr[k], arr[l]);
-                    in.add(a);
-                    in.add(b);
-                    list.add(in);
-
-                }
-            }
-        }
-       // return list.stream().map(p-> Collections.sort(p)).collect(Collectors.toList())).
-       return list.stream().map(p->p.stream().sorted().collect(Collectors.toList())).collect(Collectors.toList());
-
-      //  return list;
+        return minDiffList;
     }
 }
