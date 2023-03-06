@@ -7,6 +7,8 @@ public class MaxProfit {
     public static void main(String[] args) {
         int [] arr={7,1,5,3,6,4};
         System.out.println(maxProfit(arr));
+        System.out.println(maxProfi2(arr));
+
     }
 
     public static int maxProfit(int[] prices){
@@ -24,6 +26,20 @@ public class MaxProfit {
         }
         return profit;
 
+    }
+
+    public static int maxProfi2(int [] ar){
+
+        int min=Integer.MAX_VALUE;
+        int profit=0;
+
+        for (int i = 0; i < ar.length; i++) {
+
+            min=Math.min(ar[i], min);
+
+            profit=Math.max(profit, ar[i]-min);
+        }
+        return profit;
     }
 
 }
