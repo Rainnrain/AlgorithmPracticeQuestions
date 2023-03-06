@@ -17,6 +17,7 @@ public class FrequencyEnglish {
         String[] ar = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "more than ten"};
         for (int i = 0; i < array.length; i++) {
             map.put(array[i], map.getOrDefault(array[i], 0) + 1);
+            map.put(array[i], map.getOrDefault(array[i], 0)+1);
         }
 
         int i = 0;

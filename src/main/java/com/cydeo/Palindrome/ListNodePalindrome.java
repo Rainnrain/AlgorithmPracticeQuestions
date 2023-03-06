@@ -1,10 +1,7 @@
 package com.cydeo.Palindrome;
 
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class ListNodePalindrome {
 
@@ -19,6 +16,7 @@ public class ListNodePalindrome {
 
         System.out.println(isPalindrome(listNode));
         System.out.println(Palindrome2(listNode));
+        List<Integer> list= new ArrayList<>();
     }
 
     public static boolean Palindrome(ListNode head) {

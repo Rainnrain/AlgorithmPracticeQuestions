@@ -1,7 +1,7 @@
 package com.cydeo.BinaryTree;
 
 public class RangeSumClass {
-
+//https://leetcode.com/problems/range-sum-of-bst/
     TreeNode root;
     public int rangeSum(TreeNode node, int low, int high){
         int sum=0;
