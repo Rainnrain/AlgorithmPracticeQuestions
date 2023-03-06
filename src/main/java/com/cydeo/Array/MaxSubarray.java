@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class MaxSubarray {
+    //https://leetcode.com/problems/maximum-subarray/description/?envType=study-plan&id=data-structure-i
     public static void main(String[] args) {
         int[] ar = {-2,1,-3,4,-1,2,1,-5,4};
         System.out.println(maxsum(ar));
