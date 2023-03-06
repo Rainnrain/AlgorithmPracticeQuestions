@@ -1,7 +1,7 @@
 package com.cydeo.BinaryTree;
 
 public class IsSameTreeClass {
-
+//https://leetcode.com/problems/same-tree/submissions/910250028/
     public boolean isSameTree(TreeNode p, TreeNode q) {
         boolean same=true;
 

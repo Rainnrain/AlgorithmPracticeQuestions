@@ -40,6 +40,10 @@ public class BinaryTreeTransvesal {
             return res;
         }
     }
+
+
+
+
         public List<Integer> inorderTraversal(TreeNode root) {
             List<Integer> valuesInTree= new ArrayList<>();
 

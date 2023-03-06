@@ -1,8 +1,6 @@
 package com.cydeo.Array;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 public class timeSeries {
     /*
@@ -43,7 +41,8 @@ public class timeSeries {
     }
 
     public static Map<Integer, Double> totalTime(Map<Integer, Double> map1, Map<Integer, Double> map2){
-        for (Map.Entry<Integer, Double> entry : map2.entrySet()) {
+       // for (Map.Entry<Integer, Double> entry : map2.entrySet()) {
+            for (var entry : map2.entrySet()) {
             map1.put(entry.getKey(), map1.getOrDefault(entry.getKey(),0.0)+ entry.getValue() );
         }
 
