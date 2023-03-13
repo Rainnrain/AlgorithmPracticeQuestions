@@ -3,7 +3,7 @@ package com.cydeo;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class test {
+ class test {
 
 
     public static void main(String[] args) {
@@ -37,7 +37,4 @@ public class test {
         }
         return null;
     }
-}
-class test2{
-
 }
