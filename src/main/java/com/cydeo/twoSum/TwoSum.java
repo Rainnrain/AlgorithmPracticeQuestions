@@ -12,7 +12,7 @@ public class TwoSum {
         System.out.println( Arrays.toString( findThePairNumbers(nums, 8))  );
     }
 
-    public static Integer[] twoSum(Integer [] array, Integer num){
+    synchronized public static Integer[] twoSum(Integer [] array, Integer num){
 
         Map <Integer, Integer> map=new HashMap<>();
 
