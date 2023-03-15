@@ -1,9 +1,10 @@
 package com.cydeo.Array;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class AddOne {
-    //This was in an online assessment
+    //This was in an online assessment, It was in the form of a bowl and marbles.
     //https://leetcode.com/problems/plus-one/solutions/
     public static void main(String[] args) {
         int [] ar= {9,9,9,9};
@@ -18,6 +19,7 @@ public class AddOne {
             }
             digits[i] = 0;
         }
+
 
         digits = new int[digits.length + 1];
         digits[0] = 1;
