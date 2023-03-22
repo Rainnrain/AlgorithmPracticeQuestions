@@ -1,4 +1,4 @@
-package com.cydeo.twoSum;
+package com.cydeo.oneTwo;
 
 import java.util.*;
 
