@@ -10,6 +10,9 @@ public class twoSumReview {
 
         int [] num= {3,2,4};
         System.out.println(Arrays.toString(sumOfTwo(num, 6)));
+
+        int [] num2= {3,2,4,8};
+        System.out.println(Arrays.toString(sumOfTwo(num, 6)));
     }
 
 
